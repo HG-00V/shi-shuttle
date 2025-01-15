@@ -83,7 +83,7 @@ with col2:
 
         if recommended_routes:
             # 가장 빠른 버스 및 가장 가까운 환승지 찾기
-            fastest_route = min(recommended_routes, key=lambda x: (x[3], x[6]))
+            fastest_route = min(recommended_routes, key=lambda x: (x[3], x[6] if len(x) > 6 else float('inf')))
             while True:
                 current_time = datetime.now()
                 time_diff = datetime.strptime(fastest_route[1], "%H:%M") - current_time
